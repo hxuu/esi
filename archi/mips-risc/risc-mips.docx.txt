@@ -1,0 +1,96 @@
+﻿TP N° 01
+
+
+Objectifs :
+Nous allons travailler sur une architecture MIPS 32 bits (Microprocessor without Interlocked Pipeline Stages). L'architecture MIPS est une architecture de processeur de type RISC (Reduced Instruction Set Computer). Son architecture est une référence. Les processeurs fabriqués selon cette architecture sont surtout utilisés dans les systèmes embarqués.
+L’objectif n’est pas d’étudier cette architecture en particulier, ni d’étudier le jeu d’instruction de ce processeur. Néanmoins nous allons examiner le déroulement d’un logiciel à l’aide d’un simulateur d’architecture MIPS32. Ceci nous permettra de mieux comprendre l’organisation et l’exécution du code pour le microprocesseur.
+
+
+Présentation du simulateur MARS :
+MARS est un IDE (Integrated development environment) léger pour apprendre le langage assembleur MIPS Multiplateforme: MARS est écrit en langage JAVA, donc compatible avec tous les OS avec la machine virtuelle de java grâce au format .jar
+
+
+Prise en main de l’environnement :
+* Au démarrage il y a seulement trois options: New (créer un document en blanc)
+Open (ouvrir un fichier assembleur existant) Help (affiche l'aide)
+
+
+* En ouvrant ou créant un fichier s'activent des fonctions classique d'édition et de manipulation de fichier plus la fonction "assemble" dans le menu "run"
+* Quand on active "assemble" si il y a des erreurs dans le code elles sont indiquées dans la fenêtre "Mars  Messages"  en  donnant  les  lignes  et  les  explications  relatives  aux  erreurs. Si le code est écrit sans erreurs. L’onglet "Edit" disparait et est remplacé par l'onglet "execute" qui montre  le  suivit  des  données  en  mémoire  et  le  segment  en  action  du  code. On a alors à sa disposition d'autres fonctions: exécuter en entier, exécuter une seule instruction et redémarrer.
+* L’icône    permet de lancer l’exécution du programme jusqu’à la fin. En utilisant cette fonction vous observez le surlignement jaune qui montre l’adresse du programme en cours d’exécution. Les valeurs du programme qui sont calculées apparaissent dans le segment de donnée.
+* L’icône    permet de faire un reset du programme et des valeurs de l’ensemble des registres du simulateur.
+* L’icône        permet d’exécuter une instruction après l’autre. Autrement dit, de faire de l’exécution pas à pas. Cette fonction est complété par l’icône   qui permet de revenir d’un pas : “single-step backwards”.  
+* Le processeur utilise un adressage par octet. Vous pouvez changer le format de visualisation du contenu des adresses et des adresses en hexadécimal ou en décimal :
+  
+
+   * Dans le logiciel MARS, ajuster le « run speed » :    afin d’avoir le temps de voir l’évolution de l’algorithme en fonction du temps.
+   * Depuis l’aide, (Help>Help>Basic_Instructions) vous trouverez l’ensemble des instructions disponibles dans ce microprocesseur.
+
+
+exemple1:
+      1. Dans le logiciel MARS créer un nouveau fichier et copier le programme assembleur ci-dessous
+.data
+vars:   .word 5
+     .text
+li $t0, 10
+li $t1, 15
+la $t2, vars
+sw $t1, 0($t0)
+lw $t2, 4($t0)
+addi $t2, $t0,4
+subi $t2, $t0,4
+syscall
+
+
+      2. Déterminer ce que fait le programme en utilisant l’aide (Help>Help) pour expliquer le rôle de chaque ligne du code.
+      3. Donner le code  binaire de chaque instruction et le groupe de format .
+      4. Pour vérifier ouvrir la fenêtre MIPS X-RAY avec Tools>mips X-RAY.
+      5. Donner l’état des signaux de l’unité de contrôle et du alu-contrôle pour les instructions addi et subi
+
+
+exemple 2:
+      1. Dans le logiciel MARS créer un nouveau fichier et copier le programme assembleur ci-dessous
+.data
+vars: .word 0
+.text
+la $t0, vars
+lw $t1, 0($t0)
+li $t2, 3
+saut: beq $t1, $t2, exit
+move $a0, $t1
+li $v0, 1
+addi $t1, $t1, 1
+j saut
+exit: li $v0, 10
+syscall
+
+
+
+
+      2. Déterminer  la valeur du registre pc pour chaque instruction
+
+
+
+
+ exemple 3
+On donne le programme en c suivant: 
+.text
+li $s0, 3
+li $s1, 4
+li $a0, 3
+li $a1, 5
+jal update
+add $s4,$t0,$v0
+add $s3,$s1,$v1
+j suit
+update:
+add $s1,$a1,$a0
+add $s0,$a1,$a0
+addi $v1,$s1,0
+addi $v0,$s0,0
+jr $ra
+suit:
+syscall
+1-Déterminer  la valeur du registre pc pour les instructions du branchement.
+2-quel est le problème dans ce code?
+3-proposer deux solution pour le résoudre

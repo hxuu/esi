@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<Employes>
+    <Employe>
+        <Mat>E05</Mat>
+        <Nom>Kadri</Nom>
+        <Prenom>Amina</Prenom>
+        <Date-de-Naissance>23-11-1995</Date-de-Naissance>
+        <Service Grade="Technicien">Service3</Service>
+    </Employe>
+
+    <Employe>
+        <Mat>E04</Mat>
+        <Nom>Abelmalk</Nom>
+        <Prenom>Hakima</Prenom>
+        <Date-de-Naissance>18-10-1977</Date-de-Naissance>
+        <Service Grade="Technicien">Service3</Service>
+    </Employe>
+
+    <Employe>
+        <Mat>E01</Mat>
+        <Nom>Nouar</Nom>
+        <Prenom>Mohamed</Prenom>
+        <Date-de-Naissance>08-04-1975</Date-de-Naissance>
+        <Service Grade="Ingenieur">Service1</Service>
+    </Employe>
+
+    <Employe>
+        <Mat>E08</Mat>
+        <Nom>Tahar</Nom>
+        <Prenom>Zakaria</Prenom>
+        <Date-de-Naissance>24-08-1995</Date-de-Naissance>
+        <Service Grade="Technicien">Service3</Service>
+    </Employe>
+</Employes>
